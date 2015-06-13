@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Session["Page"] = "Index";
+    
+ 
+}
+
+@using AskCode.Models
+<!DOCTYPE html>
+<html lang="en">
+<body>
+   <audio class="control-label">
+      <source src="" />
+
+   </audio>
+    <div class="ch-container">
+        <div class="row">
+
+
+            <div id="content" class="col-lg-10 col-sm-10">
+                <!-- content starts -->
+                <div>
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="/Admin/Index">Home</a>
+                        </li>
+                        <li>
+                            <a href="/Admin/Index">Dashboard</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class=" row">
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <a data-toggle="tooltip" title="6 new members." class="well top-block" href="#">
+                            <i class="glyphicon glyphicon-user blue"></i>
+
+                            <div>Total Members</div>
+                            @{
+                                askCodeDataEntities3 ed = new askCodeDataEntities3();
+                                int count=0;
+                                foreach(User u in ed.Users.ToList())
+                                {
+                                    count++;
+                                }
+                                    
+                                <div>@count</div>
+                            }
+                           
+                        </a>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <a data-toggle="tooltip" title="4 new pro members." class="well top-block" href="#">
+                            <i class="glyphicon glyphicon-inbox green"></i>
+
+                            <div>Total Posts</div>
+                            
+                           @{
+                               count = 0;
+                           foreach(Post p in ed.Posts.ToList())
+                            {
+                            count++;
+                            }
+
+                            <div>@count</div>
+                             
+                           }
+                           
+                        </a>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <a data-toggle="tooltip" title="$34 new sales." class="well top-block" href="#">
+                            <i class="glyphicon glyphicon-comment yellow"></i>
+
+                            <div>Total Comments</div>
+                            @{
+                                count = 0;
+                                foreach (Comment c in ed.Comments.ToList())
+                                {
+                                    count++;
+                                }
+
+                                <div>@count</div>
+                            }
+                        </a>
+                    </div>
+                           
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    
+
+
+</body>
+</html>

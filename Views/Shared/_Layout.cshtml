@@ -1,0 +1,396 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  
+
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+  @using AskCode.Models;
+
+    <link href="~/Content/themes/CSS/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/Content/themes/CSS/style.css" rel="stylesheet" media="all" />
+        <link href="~/Content/themes/CSS/custom.css" rel="stylesheet" media="all" />
+        <link href="~/Content/themes/bootstrap.css" rel="stylesheet" />
+        <link rel="shortcut icon" href="~/Content/themes/Images/favicon.ico" type="image/x-icon" />   
+    <link href="~/Content/themes/CSS/font-awesome.min.css" rel="stylesheet" />
+
+    
+    
+        <meta property="og:image" content="~/Content/themes/Images/BVF4BIQ8B23F.jpg" />
+
+
+    
+        <script src="~/Content/themes/bootstrap.js"></script>
+        <script src="~/Content/themes/JS/jquery.min.js"></script>
+        <script src="~/Content/themes/JS/jquery.form.js"></script>
+        <script src="~/Content/themes/JS/jquery.livequery.js"></script>
+        <script src="~/Content/themes/JS/jquery.popup.js"></script>
+        <script src="~/Content/themes/JS/jquery.gardenhandleajaxform.js"></script>
+        <script src="~/Content/themes/JS/global.js"></script>
+        <script src="~/Content/themes/JS/discussions.js"></script>
+        <script src="~/Content/themes/bootstrap.min.js"></script>
+
+    
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+
+        <link href="~/Content/themes/CSS/enable.css" rel="stylesheet" media="all" />
+    <link href="~/Content/themes/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/SweetAlert/footer-distributed.css" rel="stylesheet" />
+
+    <link href="~/Content/SweetAlert/sweet-alert.css" rel="stylesheet" />
+    <script src="~/Content/SweetAlert/sweet-alert.min.js"></script>
+
+    <script src="~/Content/themes/JS/icheck.min.js"></script>
+    <script src="~/Content/themes/JS/ichecken.js"></script>
+    <script src="~/Content/themes/JS/components.js"></script>
+    <script src="~/Content/themes/JS/viewportchecker.js"></script>
+    <script src="~/Content/themes/JS/ajax.js"></script>
+    
+</head>
+
+ 
+    <body id="vanilla_discussions_index" class="Vanilla Discussions index  Section-DiscussionList">
+                
+        
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+
+     
+        <header>
+            <div class="container">
+                <div class="row">                   
+                    <div class="col-md-3 logocol">   
+                                 
+                        <h2 style="color:#808080 ; font-family:sans-serif">                         
+                            <img src="~/Content/themes/Images/BVF4BIQ8B23F.jpg.png" width="50" height="60"/>
+                            AskCode
+                        </h2>                        
+                 </div>
+                  
+
+
+                  
+                    <div id="cssmenu" class="respcfulix" style="margin-top:90px;color:#000000" >
+                        <ul style="margin-top:-20px">
+                            <li><a href="/Home/" class="Selected">Home</a></li>
+                            <li>
+                                <a href="#">Categories</a>
+                                <ul class="has-sub" style="margin-top:-20px">
+                                    @{
+                                        askCodeDataEntities3 cx = new askCodeDataEntities3();
+                                        List<Category> c = new List<Category>();
+                                        c = cx.Categories.ToList();
+
+                                        foreach (Category a in c)
+                                        {
+                                            <li>
+                                                <a href="#" onclick="LoadCategory('@a.CatName.Trim()')"><span>@a.CatName</span></a>
+                                            </li>
+
+                                        }
+                                    }
+
+                                </ul>
+                            </li>
+                           
+
+                            <li class="steamdiscus" ><span class=" ">
+                                </span><a href="#">Discussions</a>
+                                <ul class="has-sub" style="margin-top:-20px;">
+                                    <li onclick="Go('UnAnswered');"><a href="#" class="">UnAnswered</a></li>
+                                    <li onclick="Go('Most Voted');"><a href="#" class="">Most Voted</a></li>
+                                    <li onclick="Go('Most Viewed');"><a href="#" class="">Most Viewed</a></li>
+                                    <li onclick="Go('Solved');"><a href="#">Solved</a></li>
+                                    <li onclick="Go('Latest Posts')"><a href="#">Latest Posts</a></li>
+                                    
+                                </ul>
+                            </li>
+                            @{
+                                
+                                
+                                if (Session["username"] != null)
+                                {
+                                    string name=Session["username"].ToString();
+                                    string file=cx.Users.First(x=>x.Username==name).UserFile;
+                                    if (file=="" || file==null)
+                                    {
+                                        file = "201132185722431371_10.jpg";
+                                    }
+                                    
+                                    <li> <a href="/Home/NewPost" class="">New Post</a></li>
+                                    <li>
+                                        <a class="Dropdown" href="#" >@name &nbsp;<img src="~/Content/themes/Images/@file" alt="profile" height="50" width="50" class="ProfilePhoto ProfilePhotoMedium" style="border-radius:13px; margin-bottom:-4px;" />
+                                       </a>
+                                        <ul class="has-sub" style="margin-top:-8px;">     
+                                            <li class="steamlogin"><a href="/Home/MyPosts" class="">My Posts</a></li>                                                                 
+                                            <li class="steamlogin"><a href="/Home/MyProfile" class="">Profile</a></li>
+                                            <li class="steamlogin"><a href="/Home/Logout">Logout</a></li>
+                                            </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="steamlogin"><a href="/Session/" rel="nofollow" class="">Sign In</a></li>
+                                    <li class="steamlogin"><a href="/Session/Register" rel="nofollow">Register</a></li>
+                                }
+                                }
+                                
+
+                            
+                        </ul>
+
+                    </div>
+                    
+                    
+                    <div class="thecover"></div>
+                    <div id="cssmenumob" class="resmobifulix">
+                        <ul class="ramnova">
+                            <li class="active hassub">
+                                <i class="fa fa-list-ul"> Menu</i>
+                                <ul class="reiva">                                 
+                                    <li>
+                                        <a href="#">Categories</a>
+                                        <ul class="has-sub" >
+@{
+    
+
+    foreach(Category a in c)
+    {
+<li>
+    <a href="#" onclick = "LoadCategory('@a.CatName.Trim()')"><span>@a.CatName</span></a>
+</li>                                           
+}
+
+}
+                                    </ul>
+                                    </li>
+                                    <li ><a href="/Home/Posts?type=Latest Posts">Discussions</a></li>
+                                    <li ><a href="/Home/SignIn" rel="nofollow" class="">Sign In</a></li>
+                                    <li ><a href="/Home/Register" rel="nofollow">Register</a></li>
+                                    </ul>
+                            </li>
+                        </ul>
+                    </div>
+                   
+
+                </div>
+            </div>
+        </header>
+       
+
+      
+        <section id="searching">
+            <h6>search</h6>
+            <div class="container">
+
+
+              
+                <div class="searchio">
+                    <form method="post" action="/Home/AllPosts" style="margin-top:190px">                  
+                        <div>                           
+                            <input type="text" id="Form_Search" name="Search"  placeholder="Search" class="InputBox" />
+                            <input type="submit" id="Form_Go" value="Go" class="Button" />
+                            <input type="hidden" name="Type" value="Search Result">
+                        </div>
+
+                    </form><i class="fa fa-search"></i>
+                </div>
+
+            </div>
+        </section>
+        <!-- End of Search Section -->
+
+        <!-- Begin of Content -->
+        <section id="Frame">
+            <h6>frame</h6>
+            <section id="Body">
+                <div class="container relative">
+
+                    <!-- Begin of Sidebar -->
+                    <div class="steam-line"></div>
+                    <div class="Column PanelColumn" id="Panel">
+                        <div class="Box BoxCategories">
+                            
+                            <div style="background-color:#000000;color:#ffffff;padding:10px;border-radius:7px">
+                                    Featured                                    
+                            </div>
+                         
+
+                    
+
+                            <ul class="PanelInfo PanelCategories">
+
+                              <li  onclick="Go('Top Posts');"><a href="#" class="ItemLink">Top Posts<span class="Aside"><span class="Count" style="background-color:#000000; "><span class="fa fa-hand-o-right"></span></span></span></a></li>
+                                <li  onclick="Go('Most Viewed')"><a href="#" class="ItemLink">Most Viewed<span class="Aside"><span class="Count" style="background-color:#000000; "><span class="fa fa-hand-o-right"></span>></span></span></a></li>
+                                <li  onclick="Go('Solved')"><a href="#" class="ItemLink">Solved<span class="Aside"><span class="Count" style="background-color:#000000; "><span class="fa fa-hand-o-right"></span></span></span></a></li>
+                                <li  onclick="Go('UnAnswered')"><a href="#" class=" Itemlink">UnAnswered<span class="Aside"><span class="Count" style="background-color:#000000; "><span class="fa fa-hand-o-right"></span></span></span></a></li>
+                                <li  onclick="Go('Latest Posts')"> <a href="#" class="ItemLink">Recent<span class="Aside"><span class="Count" style="background-color:#000000; "><span class="fa fa-hand-o-right"></span></span></span></a></li>
+                              
+                            </ul>                       
+                         </div>
+                      
+                          
+                        
+                    
+                    
+                    
+                    <div class="Box BoxCategories">
+                                  <div style="background-color:#000000;color:#ffffff;padding:10px;border-radius:7px">
+                                      Categories
+                                  </div>
+                      
+
+
+                            <ul class="PanelInfo PanelCategories">
+
+@{
+ 
+    
+    foreach(Category a in c)
+    {
+        
+    <li><a href=" #" onclick="LoadCategory('@a.CatName.Trim()')" class="ItemLink">@a.CatName <span class="Aside"><span class="Count" style="background-color:#000000;; "><span class="Number">@a.PostCount</span></span></span></a></li>
+    }
+
+    }
+     </ul>
+                       
+                                  <div style="background-color:#000000;color:#ffffff;padding:10px;border-radius:7px">
+                                      Latest Posts
+                                      </div>
+
+              
+                                      <ul class="PanelInfo PanelCategories">
+                                          @{
+                                              askCodeDataEntities3 cx1 = new askCodeDataEntities3();
+                                              List<Post> p = new List<Post>();
+                                              p = cx1.Posts.OrderByDescending(x => x.PostId).ToList();
+
+                                              int count = 0;
+                                              foreach (Post a in p)
+                                              {
+                                                  if (count < 5)
+                                                  {
+                                                      <li><a href="/Home/Post?id=@a.PostId" class="ItemLink">@a.PostTitle.Substring(0, 40)<span class="Aside"><span class="Count" style="background-color:#000000; "><span class="Number">@a.CommentCount</span></span></span></a></li>
+                                                  }
+                                                  else
+                                                  {
+                                                      break;
+                                                  }
+                                                  count++;
+                                              }
+                                          }
+
+                                      </ul>
+
+                                  </div>
+                     
+
+                    </div>
+                    <div id="ajax">
+                        @RenderBody();
+                    </div>
+                   
+                </section>
+            
+
+                <!-- Begin of Foot -->
+               
+                  
+                        <!-- Various definitions for Javascript //-->
+                        <script>
+                            var definitions = {
+                                'AnalyticsTask': "tick",
+                                'TransportError': "A fatal error occurred while processing the request.<br \/>The server returned the following response: %s",
+                                'TransientKey': null,
+                                'WebRoot': "http:\/\/themesteam.com\/cube",
+                                'UrlFormat': "\/cube\/{Path}",
+                                'Path': "",
+                                'Args': "",
+                                'ResolvedPath': "vanilla\/discussions\/index",
+                                'ResolvedArgs': "{\"Page\":false}",
+                                'SignedIn': 0,
+                                'ConfirmHeading': "Confirm",
+                                'ConfirmText': "Are you sure you want to do that?",
+                                'Okay': "Okay",
+                                'Cancel': "Cancel",
+                                'Search': "Search"
+                            }
+                        </script>
+                 
+
+
+
+
+            <section id="orifooter">
+                <div class="container">
+                    <div class="pou">
+                                     
+
+                                <footer class="footer-distributed">
+                                    <div class="footer-right">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                                        <a href="#"><i class="fa fa-github"></i></a>
+                                    </div>
+                                    <div class="footer-left">
+                                        <p class="footer-links">
+                                            <a href="/Home">Home</a>
+                                            ·
+                                            <a href="/Home/AllPosts">Discussion</a>
+                                            ·
+                                            <a href="/Session/SignIn">SignIn</a>
+                                            ·
+                                            <a href="/Session/SignUp">SignUp</a>
+                                            
+                                           
+                                        </p>
+                                       
+                                    </div>
+                                </footer>
+
+                              
+                         
+
+                        <div class="row footdw">
+                            <div class="row">
+                                <div class="col-md-12 footercopy leftl">
+                                    <span class="footcop">
+                                        © 2015 AskCode  Developed by
+                                        <a class="fixf" href="#">Mughees Mehdi</a>
+
+
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+                      
+           
+
+           <script type = "text/javascript">
+
+               function Go(type)
+               {
+                   $('#ajax').load("/Home/AllPostsAjax", { "Type": type })
+                   return false;
+               }
+               function LoadCategory(type)
+               {
+                   $('#ajax').load("/Home/CategoryPage", { "category": type })
+                   return false;
+               }
+
+            </script>
+
+
+        </body>
+
+    </html>

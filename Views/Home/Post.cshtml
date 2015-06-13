@@ -1,0 +1,324 @@
+﻿@{
+    ViewBag.Title = "Post";
+}
+
+<h2>Post</h2>
+
+@using AskCode.Models;
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cube</title>
+    <link href="~/Content/themes/CSS/style.css" rel="stylesheet" media="all" />
+    <link href="~/Content/themes/CSS/custom.css" rel="stylesheet" media="all" />
+    <link href="~/Content/themes/bootstrap.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/Content/themes/Images/favicon.ico" type="image/x-icon" />
+    <script src="~/Content/themes/bootstrap.js"></script>
+    <script src="~/Content/themes/JS/jquery.min.js"></script>
+    <script src="~/Content/themes/JS/jquery.form.js"></script>
+    <script src="~/Content/themes/JS/jquery.livequery.js"></script>
+    <script src="~/Content/themes/JS/jquery.popup.js"></script>
+    <script src="~/Content/themes/JS/jquery.gardenhandleajaxform.js"></script>
+    <script src="~/Content/themes/JS/global.js"></script>
+    <script src="~/Content/themes/JS/discussions.js"></script>
+    <script src="/cube/js/library/jquery-ui-1.8.17.custom.min.js?v=2.1.8p2" type="text/javascript"></script> 
+    <link href="~/Content/themes/CSS/enable.css" rel="stylesheet" media="all" />
+    <script src="~/Content/prettify.js"></script>
+    <link href="~/Content/prettify.css" rel="stylesheet" />
+</head>
+<body>
+    <p>@Session["eo"]</p>
+
+    <div class="Column ContentColumn" id="Content">
+        <div class="MessageList Discussion">
+
+
+          
+            <div id="Item_0" class="PageTitle"><div class="Options"></div><h1>@ViewBag.Post.PostTitle</h1></div>
+
+          
+            <div class="discusx">
+                <div class="iop pol"></div>
+                <div id="Discussion_2" class="Item ItemDiscussion">
+                    <div class="Discussion">
+                        <div class="Item-Header DiscussionHeader heighter">
+
+                            @{
+                                askCodeDataEntities3 ed = new askCodeDataEntities3();
+                                 string user=ViewBag.Post.PostUsername;
+                                User u = ed.Users.First(x => x.Username.TrimEnd() == user );
+                                string img = u.UserFile;
+                               
+                            }
+                         
+                            <div class="iipo">
+                                <div class="AuthorWrap">
+                                    <span class="Author">
+                                        <i class="PhotoWrap">
+                                        <img src="~/Content/themes/Images/@img" alt="profile" class="ProfilePhoto ProfilePhotoMedium" />
+                                        </i>
+                                        @user
+                                    </span>                                  
+                                </div>                            
+
+                                <div class="colrme">                    
+                                    <i class="fa fa-clock-o"></i>  <time title="March 11, 2015 12:54PM" datetime="2015-03-11T12:54:59+00:00">@ViewBag.Post.PostDateTime</time>     
+                                    @{
+
+
+
+                                        if (Session["username"] != null)
+                                        {
+                                            string user1 = Session["username"].ToString();
+                                            int id = Model[0].PostId;
+                                            try
+                                            {
+                                                PostViewVote v = ed.PostViewVotes.First(x => x.PostId == id && x.VoteUserId.Trim() == user1);
+                                            }
+                                            catch (Exception e)
+                                            {
+
+                                                <a href="/Home/PostVoteCount?id=@Model[0].PostId"  class="btn btn-default Small pull-right" style="font-size:13px;border-radius:10px"><span class="fa fa-thumbs-o-up"></span> +1</a>
+                                            }
+
+                                        }
+                                    }
+
+                                        </div>                              
+                            </div>
+
+                          
+                            <div class="ssclear"></div>
+                        </div>
+                        <div class="Item-BodyWrap">
+                            <div class="Item-Body">
+                               
+                                @{
+                                    string a;
+                                        a = Model[0].CommentMessage.Trim();                                      
+                                        a = a.Replace("{", "<code>");
+                                        a = a.Replace("}", "</code>");                          
+                                              
+                                
+                             @Html.Raw(a);
+
+
+
+                                         string[] arr = Model[0].CommentFile.Trim().Split(',');
+
+                                         foreach (var file in arr)
+                                         {
+                                            <a href="~/Files/@file">
+                                                @file
+                                            </a>
+                                         }
+
+}
+                                
+                                
+                                
+                                                           
+                                                  
+                               
+
+          
+                                
+                               
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+          
+        <div class="CommentsWrap">
+            <span class="BeforeCommentHeading"></span><div class="DataBox DataBox-Comments">
+                <div class="ncwrap"><div class="nocommentwrap"><i class="fa fa-comments oil"></i></div></div><div class="sja">Comments</div><div class="clearleft"></div>
+
+                @{
+
+    bool status = false;
+
+                    foreach (Comment c in Model)
+                    {
+                        User u1 = ed.Users.First(x => x.Username.TrimEnd() == c.CommentUsername.Trim());
+                        string img1 = u.UserFile;
+
+                        if (status)
+                        {
+                            if (c.AnswerStatus == 1)
+                            {
+                                <i class="fa fa-check large pull-left" style="color:green;height:50px;width:50px; font-size:50px"></i>
+                            }
+                            <ul class="MessageList DataList Comments">
+                                <li class=""></li>
+
+
+                                <li class="Item Alt ItemComment" id=@c.CommentId>
+                                    <div class="Comment">
+                                        <div class="Options">
+                                        </div>
+                                        <div class="Item-Header CommentHeader">
+                                            <div class="AuthorWrap">
+                                                <span class="Author">
+                                                    <a title=@c.CommentUsername  class="PhotoWrap"><img src="~/Content/themes/Images/@img1"  class="ProfilePhoto ProfilePhotoMedium" /></a>@c.CommentUsername
+                                                </span>
+                                               
+                                            </div>
+                                            <br />
+                                            <div class="Meta CommentMeta CommentInfo">
+                                                <i class="fa fa-clock-o"></i> <span class="MItem DateCreated">
+                                                    <time title="April 22, 2015 11:48AM" datetime="2015-04-22T11:48:21+00:00">@c.CommentDateTime</time>
+                                                </span>
+                                                
+                                                        <span class="label label-default" style="height:30px;width:30px;padding:5px;font-size:20px;border-radius:10px">
+                                                            <i class="fa fa fa-thumbs-o-up" style="font-size:15px;border-radius:10px">
+                                                                @c.VoteCount
+                                                        </i></span>
+                                                   
+                                                @{
+
+
+                            if (Session["username"] != null)
+                            {
+                                string us = Session["username"].ToString();
+                                try
+                                {
+                                    CommentVote v = ed.CommentVotes.First(x => x.CommentId == c.CommentId && x.CommentUserId.Trim() == us);
+                                }
+                                catch (Exception e)
+                                {
+                                    <a href="/Home/CommentVoteCount?id=@c.CommentId" class="btn btn-default Small pull-right" style="font-size:13px;border-radius:10px"><span class="fa fa-thumbs-o-up" ></span> +1</a>
+                                }
+                            }
+                                                }
+                                                
+                                                </div>
+                                        
+                                            @{
+
+
+                            if (Session["username"] != null && Session["username"].ToString() == ViewBag.Post.PostUsername.Trim() && c.AnswerStatus == null)
+                            {
+                                <a href="/Home/MarkAnswer?id=@c.CommentId"  class="btn btn-default Small pull-right" style="font-size:13px;border-radius:10px"><span class="glyphicon glyphicon-ok" ></span> Mark Answer</a>
+                            }
+
+                                            }
+                                         </div>
+                                        <div class="Item-BodyWrap" style="margin-top:-3%">
+                                            <div class="Item-Body">
+                                                <div class="Message">
+                                                    @{
+
+                            string message = c.CommentMessage.Trim();
+                            message = message.Replace("{", "<code>");
+                            message = message.Replace("}", "</code>");
+
+                            @Html.Raw(message);
+                           <br />
+                            
+                            string []arr1 = c.CommentFile.Trim().Split(',');
+                            
+                            
+                            foreach(var file1 in arr1)
+                            {
+                                <a href="~/Files/@file1" >
+                              @file1
+                            </a>
+                                                        <br />
+                                                    }
+
+                                                    }
+
+                                                  
+                                                    <br />
+                                                   
+                                                </div>
+                                               
+                                               
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        }
+                        
+                        status = true;
+                    }
+
+
+
+
+                }
+                
+            </div>
+
+            </div>
+
+
+
+
+            </div><div class="P PagerWrap"></div>
+        </div>		<div class="Foot Closed">
+
+
+
+
+
+
+            @{
+
+                if (Session["username"] != null)
+                {
+                    <form class="form-horizontal"  action="/Home/AddComment" method="post" enctype="multipart/form-data">
+                        <fieldset>
+
+
+                            <input type="hidden" name="id" value="@ViewBag.Post.PostId" />
+                            
+                            <div class="control-group">
+                                
+                                <div class="controls">
+                                    <textarea id="comment" name="comment" placeholder="Comment here" onclick="Info()"></textarea>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <input type="file" name="image" multiple />
+                            </div>
+                          
+                            <div class="control-group">
+                                <label class="control-label" for="postComment"></label>
+                                <div class="controls">
+                                    <button type="submit" id="postComment" name="postComment" class="btn btn-primary">Post</button>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </form>
+                }
+                else
+                {
+
+                    <div class="Note Closed SignInOrRegister" style="width:700px"><a href="/Session/SignIn" >Sign In</a> or <a href="/Session/Register">Register</a> to comment.</div>
+                }
+            }
+        </div>
+    
+    <!-- End of Main -->
+        <script>
+            function Info()
+            {
+                swal("To Code", "Use Curly Braces {}", "info");
+               
+            }
+        </script>
+
+        
+    <!-- End of Main -->
+</body>
+</html>

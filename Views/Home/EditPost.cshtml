@@ -1,0 +1,67 @@
+﻿
+
+<h2>EditPost</h2>
+
+
+
+@{
+    ViewBag.Title = "Posts";
+  
+
+}
+
+@using AskCode.Models
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit Post</title>
+</head>
+<body>
+
+    <div class="ch-container">
+        <div class="row">
+
+          
+                <!-- content starts -->
+             
+           
+                    <div class="row">
+                        <div class="box col-md-8">
+                            <div class="box-inner">
+                                <div class="box-content">
+
+                                    <form class="form-horizontal" action="/Home/MyPosts" >
+                                            <fieldset>                                       
+
+                                               
+                                          
+                                                <input type="hidden" name="CommentId" value="@Model.CommentId" />
+                                            <input type="hidden" name="PostId" value="@Model.PostId"  />
+                                            <input type="hidden" name="CommentDateTime" value="@Model.CommentDateTime.Trim()"  />
+                                                    <div class="form-group">                                                    
+
+                                                        <h1> @ViewBag.PostTitle.Trim()</h1>
+
+                                                        <div class="col-md-8"  >
+                                                <textarea class="form-control" style="width:500px; height:300px"  id="comment" name="CommentMessage">@Model.CommentMessage.Trim();</textarea>
+                                                        </div>
+                                                    </div>
+                                            <input type="hidden" class="col-md-4 control-label" name="CommentUsername" style="align-content:center" value="@Model.CommentUsername.Trim()" />
+                                            <br />
+                                                                                              
+                                                <input type="submit" class="btn btn-primary" value="Save"/>
+                                           
+                                        </fieldset>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+</body>
+</html>

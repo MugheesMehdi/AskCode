@@ -1,0 +1,110 @@
+﻿
+@using AskCode.Models
+@{
+     
+    ViewBag.Title = "Profile";
+}
+
+<link href="~/Content/themes/CSS/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Content/themes/CSS/style.css" rel="stylesheet" media="all" />
+<link href="~/Content/themes/CSS/custom.css" rel="stylesheet" media="all" />
+<link href="~/Content/themes/bootstrap.css" rel="stylesheet" />
+<link rel="shortcut icon" href="~/Content/themes/Images/favicon.ico" type="image/x-icon" />
+<link href="~/Content/themes/CSS/font-awesome.min.css" rel="stylesheet" />
+
+
+
+<meta property="og:image" content="~/Content/themes/Images/BVF4BIQ8B23F.jpg" />
+
+
+
+<script src="~/Content/themes/bootstrap.js"></script>
+<script src="~/Content/themes/JS/jquery.min.js"></script>
+<script src="~/Content/themes/JS/jquery.form.js"></script>
+<script src="~/Content/themes/JS/jquery.livequery.js"></script>
+<script src="~/Content/themes/JS/jquery.popup.js"></script>
+<script src="~/Content/themes/JS/jquery.gardenhandleajaxform.js"></script>
+<script src="~/Content/themes/JS/global.js"></script>
+<script src="~/Content/themes/JS/discussions.js"></script>
+<script src="~/Content/themes/bootstrap.min.js"></script>
+
+
+<script src="~/Scripts/jquery-1.9.1.min.js"></script>
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+
+<link href="~/Content/themes/CSS/enable.css" rel="stylesheet" media="all" />
+<link href="~/Content/themes/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/SweetAlert/footer-distributed.css" rel="stylesheet" />
+
+<link href="~/Content/SweetAlert/sweet-alert.css" rel="stylesheet" />
+<script src="~/Content/SweetAlert/sweet-alert.min.js"></script>
+
+<script src="~/Content/themes/JS/icheck.min.js"></script>
+<script src="~/Content/themes/JS/ichecken.js"></script>
+<script src="~/Content/themes/JS/components.js"></script>
+<script src="~/Content/themes/JS/viewportchecker.js"></script>
+<script src="~/Content/themes/JS/ajax.js"></script>
+<h2>Profile</h2>
+
+<form class="form-horizontal" method="post" action="/Home/EditProfile" enctype="multipart/form-data">
+    <fieldset>
+
+       
+    
+
+        @{
+
+
+
+        <!-- Text input-->
+
+    <div class="form-group">
+        <div class="col-md-4 align-center">
+            <img src="~/Content/themes/Images/@Model.UserFile" alt="profile" height="150" width="150" style="border-radius:13px;align-content:center ">
+        </div>       
+        <div class="col-md-4" style="margin-left:50px">
+            <input id="image" name="image" class="input-file" type="file" value="Change Picture"  >
+        </div>
+    </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput" >Username</label>
+                <div class="col-md-4">
+                    <input id="textinput" name="User" disabled="disabled" class="form-control input-md"  type="text" value="@Model.Username.Trim()">
+                    <input id="textinput" name="Username" type="hidden"  value="@Model.Username.Trim()">
+                </div>
+            </div>
+
+        <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="email">Email </label>
+                <div class="col-md-4">
+                    <input id="email" name="emailId" value="@Model.emailId.Trim()" placeholder="" class="form-control input-md" required="" type="text">
+
+                </div>
+            </div>
+
+        <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="password">Password</label>
+                <div class="col-md-4">
+                    <input id="password" name="password" value="@Model.Password.Trim()" placeholder="" class="form-control input-md" required="" type="text">
+
+                </div>
+
+            </div>
+
+            <input type="hidden" name="@Model.UserFile.Trim()" value="" />
+        }
+        <!-- File Button -->
+       
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Save"></label>
+            <div class="col-md-4">
+                <button id="Save" name="Save" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>

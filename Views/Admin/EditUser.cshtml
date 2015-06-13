@@ -1,0 +1,70 @@
+﻿
+@model  AskCode.Models.User
+
+@{
+    ViewBag.Title = "Posts";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Session["Page"] = "EditPosts";
+}
+<h2>Update</h2>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditUser</title>
+</head>
+<body>
+    <link href="~/Content/themes/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/themes/bootstrap.min.css" rel="stylesheet" />
+    <div class="ch-container">
+        <div class="row">
+
+            <div id="content" class="col-lg-10 col-sm-10">
+            
+                <div>
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="/Admin/Index">Home</a>
+                        </li>
+                        <li>
+                            <a href="/Admin/Posts">EditPost</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="row">
+                        <div class="box col-md-12">
+                            <div class="box-inner">
+                                <div class="box-content">
+                                    @using (Html.BeginForm("Edit", "Admin", FormMethod.Post,new{@class="form-horizontal"}))
+                                    {
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+
+                                                @Html.LabelFor(m => m.emailId)
+                                                @Html.EditorFor(m => m.emailId)
+                                                <br />
+                                                @Html.LabelFor(m => m.Username)
+                                                @Html.EditorFor(m => m.Username)
+
+                                                <br />
+                                                @Html.LabelFor(m => m.Password)
+                                                @Html.EditorFor(m => m.Password)
+
+
+                                                <input type="submit" value="Save" class="Primary" />
+                                            </div>
+                                        </div>
+                                    }
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

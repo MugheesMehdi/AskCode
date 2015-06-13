@@ -1,0 +1,178 @@
+﻿@{
+    ViewBag.Title = "_Admin_Header";
+    
+}
+<html>
+
+<head>
+  
+    <meta charset="utf-8">
+    <title>Ask Code Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
+    <meta name="author" content="Mughees Mehdi">
+    
+    <!-- The styles -->
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <link id="bs-css" href="~/Content/themes/CSS/bootstrap-cerulean.min.css" rel="stylesheet">
+
+    <link href="~/Content/themes/CSS/charisma-app.css" rel="stylesheet">
+    <link href='~/Content/themes/bower_components/fullcalendar/dist/fullcalendar.css'  rel=' stylesheet'>
+    <link href='~/Content/themes/bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
+    <link href='~/Content/themes/bower_components/chosen/chosen.min.css' rel='stylesheet'>
+    <link href='~/Content/themes/bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
+    <link href='~/Content/themes/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
+    <link href='~/Content/themes/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
+    <link href='~/Content/themes/CSS/jquery.noty.css' rel='stylesheet'>
+    <link href='~/Content/themes/CSS/noty_theme_default.css' rel='stylesheet'>
+    <link href='~/Content/themes/CSS/elfinder.min.css' rel='stylesheet'>
+    <link href='~/Content/themes/CSS/elfinder.theme.css' rel='stylesheet'>
+    <link href='~/Content/themes/CSS/jquery.iphone.toggle.css' rel='stylesheet'>
+    <link href='~/Content/themes/CSS/uploadify.css' rel='stylesheet'>
+    <link href='~/Content/themes/CSS/animate.min.css' rel='stylesheet'>
+    <link href="~/Content/themes/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/themes/bootstrap.min.css" rel="stylesheet" />   
+ 
+
+  
+    <link rel="shortcut icon" href="~/Content/themes/images/favicon.ico">
+
+</head>
+<body>
+    <!-- topbar starts -->
+    <div class="navbar navbar-default" role="navigation">
+
+        <div class="navbar-inner">
+            <button type="button" class="navbar-toggle pull-left animated flip">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/Admin/Index">
+                <img alt="METRO" src="~/Content/themes/Images/BVF4BIQ8B23F.jpg.png" class="hidden-xs"  />
+                <span>AskCode</span>
+            </a>
+
+                  
+                <div class="btn-group pull-right">
+
+                    <a class="btn btn-default" href="~/Home/">
+                        <i class="glyphicon glyphicon-user"></i>                       
+                        Logout                   
+                    </a>
+
+
+                   
+                </div>
+            
+         
+            <ul class="collapse navbar-collapse nav navbar-nav top-menu">
+                <li><a href="/Home/Index"><i class="glyphicon glyphicon-globe"></i> Visit Site</a></li>
+
+            </ul>
+
+        </div>
+    </div>
+    >
+
+
+    <div class="ch-container">
+        <div class="row">
+
+
+            <!-- left menu starts -->
+            <div class="col-sm-2 col-lg-2">
+                <div class="sidebar-nav">
+                    <div class="nav-canvas">
+                        <div class="nav-sm nav nav-stacked">
+
+                        </div>
+                        <ul class="nav nav-pills nav-stacked main-menu">
+                            <li class="nav-header">Main</li>
+                            <li @{if (Session["Page"] == "Home") { <text> class="active" </text>         }}>
+                                <a class="ajax-link" href="/Admin/Index"><i class="glyphicon glyphicon-dashboard"></i><span> Home</span></a>
+                            </li>
+                            <li @{if (Session["Page"] == "Posts") { <text> class="active" </text>          }}>
+                                <a class="ajax-link" href="/Admin/Posts"><i class="glyphicon glyphicon-pencil"></i><span>Posts</span></a>
+                            </li>
+                            <li @{if (Session["Page"] == "Users") { <text> class="active" </text>           }}>
+                                <a class="ajax-link" href="/Admin/Users"><i class="glyphicon glyphicon-user"></i><span> Users</span></a>
+                            </li>
+                            <li @{if (Session["Page"] == "Tags") { <text> class="active" </text>               }}>
+                                <a class="ajax-link" href="/Admin/Tags"><i class="glyphicon glyphicon-tag"></i><span> Tags</span></a>
+                            </li>
+                            <li @{if (Session["Page"] == "Categories") { <text> class="active" </text>               }}>
+                                <a class="ajax-link" href="/Admin/Categories"><i class="glyphicon glyphicon-tag"></i><span> Categories</span></a>
+                            </li>
+                            <li @{if (Session["Page"] == "AddCategory") { <text> class="active" </text>            }}>
+                                <a class="ajax-link" href="/Admin/AddCategory"><i class="glyphicon glyphicon-list"></i><span> Add Category</span></a>
+                            </li>
+                            <li @{if (Session["Page"] == "AddTag") { <text> class="active" </text>             }}>
+                                <a class="ajax-link" href="/Admin/AddTag"><i class="glyphicon glyphicon-tag"></i><span> Add Tag</span></a>
+                            </li>
+                           
+                           @*
+                            <li @{if (Session["Page"] == "Profile") { <text> class="active" </text>             }}>
+                                <a class="ajax-link" href="/Admin/Profile"><i class="glyphicon glyphicon-list"></i><span> Profile</span></a>
+                            </li>
+                            *@
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <!--/span-->
+            <!-- left menu ends -->
+
+            
+            @RenderBody()
+
+
+            <!-- external javascript -->
+
+            <script src="~/Content/themes/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        
+            <script src="~/Content/themes/JS/jquery.cookie.js"></script>
+            <!-- calender plugin -->
+            <script src='~/Content/themes/bower_components/moment/min/moment.min.js'></script>
+            <script src='~/Content/themes/bower_components/fullcalendar/dist/fullcalendar.min.js'></script>
+            <!-- data table plugin -->
+            <script src='~/Content/themes/jquery.dataTables.min.js'></script>
+
+            <!-- select or dropdown enhancer -->
+            <script src="~/Content/themesbower_components/chosen/chosen.jquery.min.js"></script>
+            <script src="~/Content/themesbower_components/chosen/chosen.jquery.js"></script>
+            <script src="~/Content/themesbower_components/chosen/chosen.proto.js"></script>
+            <script src="~/Content/themesbower_components/chosen/chosen.proto.min.js"></script>
+
+            <!-- plugin for gallery image view -->
+            <script src="~/Content/themes/bower_components/colorbox/jquery.colorbox-min.js"></script>
+            <!-- notification plugin -->
+            <script src="~/Content/themes/JS/jquery.noty.js"></script>
+            <!-- library for making tables responsive -->
+            <script src="~/Content/themes/bower_components/responsive-tables/responsive-tables.js"></script>
+            <!-- tour plugin -->
+            <script src="~/Content/themes/JS/bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
+            <!-- star rating plugin -->
+            <script src="~/Content/themes/JS/jquery.raty.min.js"></script>
+            <!-- for iOS style toggle switch -->
+            <script src="~/Content/themes/JS/jquery.iphone.toggle.js"></script>
+            <!-- autogrowing textarea plugin -->
+            <script src="~/Content/themes/JS/jquery.autogrow-textarea.js"></script>
+            <!-- multiple file upload plugin -->
+            <script src="~/Content/themes/JS/jquery.uploadify-3.1.min.js"></script>
+            <!-- history.js for cross-browser state change on ajax -->
+            <script src="~/Content/themes/JS/jquery.history.js"></script>
+            <!-- application script for Charisma demo -->
+            <script src="~/Content/themes/JS/charisma.js"></script>
+
+           
+        </div>
+    </div>
+
+
+</body>
+</html>

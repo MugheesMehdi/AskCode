@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "MyPosts";
+    
+}
+<link href="~/Content/SweetAlert/sweet-alert.css" rel="stylesheet" />
+<script src="~/Content/SweetAlert/sweet-alert.min.js"></script>
+<h2>MyPosts</h2>
+@using AskCode.Models
+<body>
+    <h2>@Session["eo"]</h2>
+  
+                    <div class="box col-md-8">
+                        <div class="box-inner">
+                            <div class="box-content">
+                                <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+                                    <thead>
+                                        <tr>
+                                            <th>Post Title</th>
+                                            <th>Date Posted</th>
+                                            <th>Comments</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+
+
+                                    <tbody>
+
+                                        @{
+                                         
+                                            foreach (Post u in Model)
+                                            {
+                                                <tr>
+                                                    <td class="center">@u.PostTitle</td>
+                                                    <td class="center">@u.PostDateTime </td>
+                                                    <td class="center">@u.CommentCount</td>
+                                                    <td class="center">
+                                                        <a class="btn btn-info" href="/Home/Post?id=@u.PostId">
+                                                            <i class="fa fa-street-view"></i>
+                                                            View
+                                                        </a>
+                                                        <a class="btn btn-info" href="/Home/EditPost?id=@u.PostId">
+                                                            <i class="fa fa-edit"></i>
+                                                            Edit
+                                                        </a>
+                                                        <a class="btn btn-danger" onclick="Delete('@u.PostId');" >
+                                                            <i class="fa fa-remove"></i>
+                                                            Delete
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+  
+   <script>
+       function Delete(id) 
+       {
+
+
+           swal({
+               title: "Are you sure?",
+               text: "Your will not be able to recover this imaginary file!",
+               type: "warning",
+               showCancelButton: true,
+               confirmButtonClass: "btn-danger",
+               confirmButtonText: "Yes, delete it!",
+               closeOnConfirm: false
+           },
+function () {
+    window.location.assign("/Home/DeletePost?id="+id);
+   
+});
+       }
+   </script>
+ 
+      @{
+          try
+          {
+              string a = Session["Login"].ToString();
+              if(a=="Deleted")
+              {
+                  <script type="text/javascript">
+
+
+                        $(document).ready(function ()
+                        {
+                            swal("Deleted!", "Your Post has been deleted.", "success");
+
+                        });
+
+                        </script>
+                  Session["Login"] = null;
+                  
+              };
+             
+               if(a=="Editted")
+              {
+                  <script type="text/javascript">
+
+
+                        $(document).ready(function ()
+                        {
+                            swal("Editted", "Your Post has been Editted.", "success");
+
+                        });
+
+                        </script>
+                  Session["Login"] = null;
+              };
+          }
+          catch (Exception e)
+          {
+
+          }
+}
+        
+ 
+  
+</body>

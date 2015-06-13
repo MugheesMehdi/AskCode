@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "NewPost";
+}
+@using AskCode.Models
+<h2>NewPost</h2>
+<div class="FormTitleWrapper">
+    <form class="form-horizontal" action="/Home/AddPost" method="post" enctype="multipart/form-data">
+        <fieldset>
+
+
+            <!-- Text input-->
+            <div class="control-group">
+                <label class="control-label" for="Title">Title</label>
+                <div class="controls">
+                    <input id="Title" name="title" placeholder="Title" class=" form-control" type="text">
+
+                </div>
+            </div>
+
+            <!-- Select Basic -->
+            <div class="control-group">
+                <label class="control-label" for="Category">Category</label>
+                <div class="controls">
+                    <select class="combobox" name="category">
+                        @{
+
+                            askCodeDataEntities3 cx = new askCodeDataEntities3();
+                            List<Category> c = new List<Category>();
+                            c = cx.Categories.ToList();
+                           
+
+                            foreach (Category a in c)
+                            {
+                                <option value="@a.CatName">@a.CatName</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+
+
+           
+
+                <div class="control-group">
+                    <label class=" control-label" for="checkboxes">Tags</label>
+                    @foreach (Tag t in cx.Tags.ToList())
+                    {                                   
+                                
+                               <div class="checkbox">
+                                  <label for="@t.TagId">
+                                     <input name="tags" value="@t.TagName.Trim()"  type="checkbox">
+                                      @t.TagName.Trim();
+                                   </label>
+                                </div>                  
+
+                              
+                        
+                    }
+           
+            
+                    </div>
+           
+
+
+            <!-- Textarea --->
+            <div class="control-group">
+                <label class="control-label" for="textarea">Content</label>
+                <div class="controls">
+                    <textarea class="form-control" id="textarea" name="post">default text</textarea>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <input type="file" name="file" />
+            </div>
+
+            <!-- Button -->
+            <div class="control-group">
+                <label class="control-label" for="Post"></label>
+                <div class="controls">
+                    <button id="Post" class="btn btn-primary" type="submit">Post</button>
+                </div>
+            </div>
+
+            </fieldset>
+            </form>
+
+            </div>

@@ -1,0 +1,175 @@
+﻿@using PagedList.Mvc;
+@using AskCode.Models
+@model PagedList.PagedList<AskCode.Models.Post>
+<h2> @ViewBag.Title</h2>
+
+
+<htmk>
+    <head>
+
+        <script src="~/Content/themes/bootstrap.js"></script>
+        <script src="~/Content/themes/JS/jquery.min.js"></script>
+        <script src="~/Content/themes/JS/jquery.form.js"></script>
+        <script src="~/Content/themes/JS/jquery.livequery.js"></script>
+        <script src="~/Content/themes/JS/jquery.popup.js"></script>
+        <script src="~/Content/themes/JS/jquery.gardenhandleajaxform.js"></script>
+        <script src="~/Content/themes/JS/global.js"></script>
+        <script src="~/Content/themes/JS/discussions.js"></script>
+
+    </head>
+    <body>
+
+        <p>@Session["eo"]</p>
+        <div class="Column ContentColumn" id="Content">
+            <h2>@ViewBag.cat</h2>
+
+            <ul class="DataList Discussions">
+
+                @{
+                    string img;
+                    askCodeDataEntities3 ed = new askCodeDataEntities3();
+
+                    foreach (Post p in Model)
+                    {
+                        User u = ed.Users.First(x => x.Username.TrimEnd() == p.PostUsername.TrimEnd());
+
+                        if (u.UserFile == null)
+                        {
+                            img = "1.png";
+                        }
+                        else
+                        {
+                            img = u.UserFile;
+                        }
+                        <li>
+
+
+
+                            <a class="PhotoWrap">
+                                <img src="~/Content/themes/Images/@img.Trim()" alt=" steam" class="ProfilePhoto ProfilePhotoMedium" />
+                            </a>   <span class="Options">
+                            </span>
+                            <div class="ItemContent Discussion" style="border-width:2px;border-color:black">
+                                <div class="Title">
+                                    <a href="/Home/Post?id=@p.PostId">@p.PostTitle</a>
+
+                                    <span class="MItem pull-right" style="height:30px">
+                                        <span style="height:30px">
+                                            <span class="label label-default" style="color:#ffffff"><i class="fa fa-eye" style="height:50px;width:50px;padding:10px;font-size:13px;border-radius:10px">@p.ViewCount</i></span>
+                                        </span>
+
+                                        <span class="label label-default" style="color:#ffffff">
+                                            <i class="fa  fa-thumbs-o-up" style="height:50px;width:50px;padding:10px;font-size:13px;border-radius:10px">
+                                                @p.VoteCount
+                                            </i>
+                                        </span>
+                                    </span>
+
+
+
+
+
+
+
+
+                                </div>
+
+                                <div class="Meta Meta-Discussion">
+                                    <span class="Tag Tag-Announcement" title="Announcement">Question</span>
+                                    <span class="MItem MCount CommentCount"><span class="Number">@p.CommentCount</span> comments</span>
+                                    <span class="MItem MCount DiscussionScore Hidden"><span title="0 points" class="Number">0</span> points</span>
+                                    <span class="MItem LastCommentBy"> by @p.PostUsername</span>
+                                    <span class="MItem LastCommentDate"><time title="April 22, 2015 11:48AM" datetime="2015-04-22T11:48:21+00:00">@p.PostDateTime</time></span>
+                                    <span class="MItem Category Category-general"><a href="/Home/CategoryPage?category=@p.Category.CatName">@p.Category.CatName</a></span>
+
+                                    <div style="margin-top:2%;">
+                                        @{
+                        if (p.Tags != null)
+                        {
+                            string[] arr = p.Tags.Trim().Split(',');
+                            foreach (string tag in arr)
+                            {
+                                <span class="Tag Tag " style="margin-top:3%;font-size:15px"><i class="fa fa-tag"></i>@tag</span>
+                            }
+                        }
+                                        }
+
+                                    </div>
+                                    @{
+                        if (Session["username"] != null)
+                        {
+                            string user = Session["username"].ToString();
+                            try
+                            {
+                                PostViewVote v = ed.PostViewVotes.First(x => x.PostId == p.PostId && x.VoteUserId.Trim() == user);
+                            }
+                            catch (Exception e)
+                            {
+                                <a href="/Home/PostVoteCount?id=@p.PostId" class="btn btn-default Small pull-right" style="font-size:13px;border-radius:10px">
+                                    <span class=" fa fa-thumbs-o-up" style="height:20px;width:20px;font-size:13px;border-radius:10px">
+                                    </span> +1
+                                </a>
+                            }
+                        }
+                                    }
+
+                                </div>
+
+
+
+                            </div>
+
+                        </li>
+
+                    }
+                }
+            </ul>
+        </div>
+        <div id='Paging' style="text-align:center">
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+            of @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("PostsPages", new { page }))
+
+
+        </div>
+        @{  try
+          {
+              string login = Session["Login"].ToString();
+              if (login != null)
+              {
+
+                <script type="text/javascript">
+
+
+                        $(document).ready(function ()
+                        {
+                            LoginSuccessful();
+
+                    });
+
+
+                </script>
+              }
+
+          }
+          catch (Exception e)
+          {
+
+          }
+          Session["Login"] = null;
+        }
+        <script>
+           function LoginSuccessful()
+           {
+               swal("Successfully LoggedIn","Welcome To AskCode","success");
+           }
+        </script>
+
+
+
+
+    </body>
+</htmk>
+
+
