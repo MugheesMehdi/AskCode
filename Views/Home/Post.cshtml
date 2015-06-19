@@ -46,7 +46,7 @@
                         <div class="Item-Header DiscussionHeader heighter">
 
                             @{
-                                askCodeDataEntities3 ed = new askCodeDataEntities3();
+                                askCodeDataEntities4 ed = new askCodeDataEntities4();
                                  string user=ViewBag.Post.PostUsername;
                                 User u = ed.Users.First(x => x.Username.TrimEnd() == user );
                                 string img = u.UserFile;

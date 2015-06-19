@@ -93,7 +93,7 @@
                                 <a href="#">Categories</a>
                                 <ul class="has-sub" style="margin-top:-20px">
                                     @{
-                                        askCodeDataEntities3 cx = new askCodeDataEntities3();
+                                        askCodeDataEntities4 cx = new askCodeDataEntities4();
                                         List<Category> c = new List<Category>();
                                         c = cx.Categories.ToList();
 
@@ -275,7 +275,7 @@
 
                             <ul class="PanelInfo PanelCategories">
                                 @{
-                                    askCodeDataEntities3 cx1 = new askCodeDataEntities3();
+                                    askCodeDataEntities4 cx1 = new askCodeDataEntities4();
                                     List<Post> p = new List<Post>();
                                     p = cx1.Posts.OrderByDescending(x => x.PostId).ToList();
 
