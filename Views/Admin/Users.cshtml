@@ -58,7 +58,7 @@
                                                             <i class="glyphicon glyphicon-edit icon-white"></i>
                                                             Edit
                                                         </a>
-                                                        <a class="btn btn-danger" href="/Admin/DeleteUser?id=@u.Username">
+                                                        <a class="btn btn-danger"  onclick="Delete('@u.Username');">
                                                             <i class="glyphicon glyphicon-trash icon-white"></i>
                                                             Delete
                                                         </a>
@@ -80,4 +80,26 @@
         </div><!--/fluid-row-->
 
     </div><!--/.fluid-container-->
+
+    <script>
+       function Delete(id)
+       {
+
+
+           swal({
+               title: "Are you sure?",
+               text: "Your will not be able to recover this imaginary file!",
+               type: "warning",
+               showCancelButton: true,
+               confirmButtonClass: "btn-danger",
+               confirmButtonText: "Yes, delete it!",
+               closeOnConfirm: false
+           },
+function ()
+{
+    window.location.assign("/Admin/DeleteUser?id="+id);
+
+});
+       }
+    </script>
 </body>

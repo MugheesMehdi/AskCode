@@ -27,13 +27,13 @@
                 <!-- content starts -->
              
            
-                    <div class="row">
-                        <div class="box col-md-8">
+                    <div class="row" style="margin-left:20px">
+                        <div class="box col-md-8 align-center">
                             <div class="box-inner">
                                 <div class="box-content">
 
                                     <form class="form-horizontal" action="/Home/MyPosts" >
-                                            <fieldset>                                       
+                                            <fieldset>                                
 
                                                
                                           
@@ -42,10 +42,10 @@
                                             <input type="hidden" name="CommentDateTime" value="@Model.CommentDateTime.Trim()"  />
                                                     <div class="form-group">                                                    
 
-                                                        <h1> @ViewBag.PostTitle.Trim()</h1>
+                                                        <h4> @ViewBag.PostTitle.Trim()</h4>
 
                                                         <div class="col-md-8"  >
-                                                <textarea class="form-control" style="width:500px; height:300px"  id="comment" name="CommentMessage">@Model.CommentMessage.Trim();</textarea>
+                                                <textarea class="form-control" style="width:500px; height:200px"  id="comment" name="CommentMessage">@Model.CommentMessage.Trim();</textarea>
                                                         </div>
                                                     </div>
                                             <input type="hidden" class="col-md-4 control-label" name="CommentUsername" style="align-content:center" value="@Model.CommentUsername.Trim()" />

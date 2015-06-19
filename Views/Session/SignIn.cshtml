@@ -3,9 +3,10 @@
     Layout = null;
 }
 
-<h2>SignIn</h2>
+
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Sign In </title>
     <link href="~/Content/themes/CSS/font-awesome.min.css" rel="stylesheet" />
@@ -59,13 +60,13 @@
     
 </head>
 
-<body id="dashboard_entry_signin" class="Dashboard Entry signin  Section-Entry">
+<body id="dashboard_entry_signin" class="Dashboard Entry signin  Section-Entry" >
 
     <script>
-   
-    </script>
 
-                
+    </script>
+    <h2 style="color:floralwhite">SignIn</h2>
+
     @{
         try
         {
@@ -94,149 +95,149 @@
 
     }
     <script>
-        function LoginSuccessful()
-        {
-        swal("Successfully LoggedIn", "Welcome To AskCode", "success");
-    }
+        function LoginSuccessful() {
+            swal("Successfully LoggedIn", "Welcome To AskCode", "success");
+        }
     </script>
 
 
-    
-                <div class="Column ContentColumn" id="Content">
-                    <div class="blackit"><a href="../"><i class="fa fa-arrow-circle-left"></i> <span>Back to Home</span></a></div>
-                    <h1>Sign In</h1><div class="ctt">
-              
-                        <form id="Form_User_SignIn" method="post" action="/Session/Verify">
 
-                                
-                                    <div class="MainForm">
-                                        <ul>
-                                              <li>
+    <div class="Column ContentColumn" id="Content">
+        <div class="blackit"><a href="../"><i class="fa fa-arrow-circle-left"></i> <span>Back to Home</span></a></div>
+        <h1>Sign In</h1><div class="ctt">
 
-                                                <div class="fulix">
-
-                                                    <label for="Form_Email">Username</label>
-                                                    <div class="TextBoxWrapper"><input type="text" required=""  id="Form_Email" name="Username" value=""  placeholder="Username" class="InputBox" /></div>
-                                                </div>
-                                            </li>
-
-                                            <li>
-                                                <div class="fulix">
-
-                                                    <label for="Form_Password">Password</label>
-                                                    <input type="password" id="Form_Password" required="" name="Password" value="" class="InputBox Password" placeholder="Enter Password" />
-                                                </div>
-                                            </li>
-                                        </ul>
-                                  
-                                </div>
-              
-                               
-                                  
-                                                      
+            <form id="Form_User_SignIn" method="post" action="/Session/Verify">
 
 
-                             
+                <div class="MainForm">
+                    <ul>
+                        <li>
 
-                         
-                            <div class="Buttons">
+                            <div class="fulix">
 
-                                <input type="submit" id="Form_SignIn" name="Sign_In" value="Sign In" class="Button Primary"  />
+                                <label for="Form_Email">Username</label>
+                                <div class="TextBoxWrapper"><input type="text" required="" id="Form_Email" name="Username" value="" placeholder="Username" class="InputBox" /></div>
+                            </div>
+                        </li>
 
+                        <li>
+                            <div class="fulix">
 
-                                <div class="CreateAccount mj">
-                                    Don't have an account? <a href="/Session/Register">Create One.</a>
-                                </div>
+                                <label for="Form_Password">Password</label>
+                                <input type="password" id="Form_Password" required="" name="Password" value="" class="InputBox Password" placeholder="Enter Password" />
+                            </div>
+                        </li>
+                    </ul>
 
-                            </div>               
-                    </form>    
-                             
-
-
-
-
-
-
-                            <style type="text/css">
-                                .foldmenu, .origamit, .menucol, .footerw, .rightl, .fic, .BreadcrumbsWrapper {
-                                    display: none;
-                                }
-
-                                .logocol {
-                                    width: 100% !important;
-                                    text-align: center;
-                                    color: #333333;
-                                }
-
-                                .SiteTitle a {
-                                    color: #333333;
-                                    position: relative;
-                                    top: 40px;
-                                }
-
-                                body {
-                                    padding-bottom: 150px;
-                                }
-
-                                .orifooter {
-                                    background: none;
-                                    border: none;
-                                }
-
-                                .leftl {
-                                    float: none;
-                                    width: 100%;
-                                    text-align: center;
-                                    padding: 0px;
-                                }
-
-                                .footcop {
-                                    font-size: 13px;
-                                    color: #000000;
-                                    opacity: 0.9;
-                                    font-weight: normal;
-                                    margin-left: -15px;
-                                    font-family: "Open Sans", helvetica, arial, sans-serif;
-                                }
-
-                                body.Entry form ul li label {
-                                    padding: 8px 0 0;
-                                }
-
-                                .orifooter {
-                                    padding-bottom: 0px;
-                                    margin-top: 64px;
-                                }
-
-                                a.ForgotPassword {
-                                    font-size: 14px;
-                                    font-family: 'Open Sans';
-                                    font-weight: 400;
-                                    font-size: 13px;
-                                    color: #333333;
-                                }
-
-                                .icheckbox_flat-blue, .iradio_flat-blue {
-                                    top: -1px;
-                                }
-
-                                ::-webkit-input-placeholder {
-                                    color: black;
-                                }                             
-
-                                ::-moz-placeholder { /* Firefox 19+ */
-                                    color: black;
-                                }
-
-                                :-ms-input-placeholder {
-                                    color: black;
-                                }
-                            </style>
-
-                        </div>
-                
                 </div>
-   
 
-              </body>
+
+
+
+
+
+
+
+
+                <div class="Buttons">
+
+                    <input type="submit" id="Form_SignIn" name="Sign_In" value="Sign In" class="Button Primary" />
+
+
+                    <div class="CreateAccount mj">
+                        Don't have an account? <a href="/Session/Register">Create One.</a>
+                    </div>
+
+                </div>
+            </form>
+
+
+
+
+
+
+
+            <style type="text/css">
+                .foldmenu, .origamit, .menucol, .footerw, .rightl, .fic, .BreadcrumbsWrapper {
+                    display: none;
+                }
+
+                .logocol {
+                    width: 100% !important;
+                    text-align: center;
+                    color: #333333;
+                }
+
+                .SiteTitle a {
+                    color: #333333;
+                    position: relative;
+                    top: 40px;
+                }
+
+                body {
+                    padding-bottom: 150px;
+                }
+
+                .orifooter {
+                    background: none;
+                    border: none;
+                }
+
+                .leftl {
+                    float: none;
+                    width: 100%;
+                    text-align: center;
+                    padding: 0px;
+                }
+
+                .footcop {
+                    font-size: 13px;
+                    color: #000000;
+                    opacity: 0.9;
+                    font-weight: normal;
+                    margin-left: -15px;
+                    font-family: "Open Sans", helvetica, arial, sans-serif;
+                }
+
+                body.Entry form ul li label {
+                    padding: 8px 0 0;
+                }
+
+                .orifooter {
+                    padding-bottom: 0px;
+                    margin-top: 64px;
+                }
+
+                a.ForgotPassword {
+                    font-size: 14px;
+                    font-family: 'Open Sans';
+                    font-weight: 400;
+                    font-size: 13px;
+                    color: #333333;
+                }
+
+                .icheckbox_flat-blue, .iradio_flat-blue {
+                    top: -1px;
+                }
+
+                ::-webkit-input-placeholder {
+                    color: black;
+                }
+
+                ::-moz-placeholder { /* Firefox 19+ */
+                    color: black;
+                }
+
+                :-ms-input-placeholder {
+                    color: black;
+                }
+            </style>
+
+        </div>
+
+    </div>
+
+
+</body>
+
 </html>

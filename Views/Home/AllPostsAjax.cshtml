@@ -3,7 +3,10 @@
     Layout = null;
     }
 
+
+@using PagedList.Mvc;
 @using AskCode.Models
+@model PagedList.PagedList<AskCode.Models.Post>
 
 
 
@@ -113,6 +116,14 @@
             }
         }
     </ul>
+</div>
+<div id='Paging' style="text-align:center">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("PostsPages", new { page }))
+
+
 </div>
 @{  try
   {

@@ -5,36 +5,51 @@
 
     <title>@ViewBag.Title</title>
 
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+   
   @using AskCode.Models;
 
-    <link href="~/Content/themes/CSS/font-awesome.min.css" rel="stylesheet" />
-        <link href="~/Content/themes/CSS/style.css" rel="stylesheet" media="all" />
-        <link href="~/Content/themes/CSS/custom.css" rel="stylesheet" media="all" />
-        <link href="~/Content/themes/bootstrap.css" rel="stylesheet" />
-        <link rel="shortcut icon" href="~/Content/themes/Images/favicon.ico" type="image/x-icon" />   
-    <link href="~/Content/themes/CSS/font-awesome.min.css" rel="stylesheet" />
 
+  
     
     
         <meta property="og:image" content="~/Content/themes/Images/BVF4BIQ8B23F.jpg" />
 
 
-    
-        <script src="~/Content/themes/bootstrap.js"></script>
-        <script src="~/Content/themes/JS/jquery.min.js"></script>
-        <script src="~/Content/themes/JS/jquery.form.js"></script>
-        <script src="~/Content/themes/JS/jquery.livequery.js"></script>
-        <script src="~/Content/themes/JS/jquery.popup.js"></script>
-        <script src="~/Content/themes/JS/jquery.gardenhandleajaxform.js"></script>
-        <script src="~/Content/themes/JS/global.js"></script>
-        <script src="~/Content/themes/JS/discussions.js"></script>
-        <script src="~/Content/themes/bootstrap.min.js"></script>
-
-    
     <script src="~/Scripts/jquery-1.9.1.min.js"></script>
-    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Content/themes/base/jquery-2.1.3.js"></script>
+    <script src="~/Content/themes/jquery-latest.min.js"></script>
+
+
+     
+   
+
+
+    <link href="~/Content/themes/base/minified/jquery.ui.autocomplete.min.css" rel="stylesheet" />
+  
+    
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.8.24.js"></script>
+    <script src="~/Scripts/jquery-ui-1.8.24.min.js"></script>
+
+
+    <script src="~/Content/themes/bootstrap.js"></script>
+    <script src="~/Content/themes/JS/jquery.min.js"></script>
+    <script src="~/Content/themes/JS/jquery.form.js"></script>
+    <script src="~/Content/themes/JS/jquery.livequery.js"></script>
+    <script src="~/Content/themes/JS/jquery.popup.js"></script>
+    <script src="~/Content/themes/JS/jquery.gardenhandleajaxform.js"></script>
+    <script src="~/Content/themes/JS/global.js"></script>
+    <script src="~/Content/themes/JS/discussions.js"></script>
+    <script src="~/Content/themes/bootstrap.min.js"></script>
+    
+    <link href="~/Content/themes/CSS/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/themes/CSS/style.css" rel="stylesheet" media="all" />
+    <link href="~/Content/themes/CSS/custom.css" rel="stylesheet" media="all" />
+    <link href="~/Content/themes/bootstrap.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/Content/themes/Images/favicon.ico" type="image/x-icon" />
+    <link href="~/Content/themes/CSS/font-awesome.min.css" rel="stylesheet" />
 
         <link href="~/Content/themes/CSS/enable.css" rel="stylesheet" media="all" />
     <link href="~/Content/themes/bootstrap.min.css" rel="stylesheet" />
@@ -48,17 +63,15 @@
     <script src="~/Content/themes/JS/components.js"></script>
     <script src="~/Content/themes/JS/viewportchecker.js"></script>
     <script src="~/Content/themes/JS/ajax.js"></script>
+  
+  
     
 </head>
 
  
     <body id="vanilla_discussions_index" class="Vanilla Discussions index  Section-DiscussionList">
-                
-        
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
-
-     
+       
+           
         <header>
             <div class="container">
                 <div class="row">                   
@@ -191,8 +204,8 @@
                 <div class="searchio">
                     <form method="post" action="/Home/AllPosts" style="margin-top:190px">                  
                         <div>                           
-                            <input type="text" id="Form_Search" name="Search"  placeholder="Search" class="InputBox" />
-                            <input type="submit" id="Form_Go" value="Go" class="Button" />
+                            <input type="text" id="Form_Search" name="term" placeholder="Search" class="InputBox" data-autocomplete-source="@Url.Action("TagSearch", "Home")" />
+                            <input type="submit" id="Form_Go" value="Go" class="Button"  />
                             <input type="hidden" name="Type" value="Search Result">
                         </div>
 
@@ -213,94 +226,89 @@
                     <div class="steam-line"></div>
                     <div class="Column PanelColumn" id="Panel">
                         <div class="Box BoxCategories">
-                            
+
                             <div style="background-color:#000000;color:#ffffff;padding:10px;border-radius:7px">
-                                    Featured                                    
+                                Featured
                             </div>
-                         
-
-                    
-
                             <ul class="PanelInfo PanelCategories">
 
-                              <li  onclick="Go('Top Posts');"><a href="#" class="ItemLink">Top Posts<span class="Aside"><span class="Count" style="background-color:#000000; "><span class="fa fa-hand-o-right"></span></span></span></a></li>
-                                <li  onclick="Go('Most Viewed')"><a href="#" class="ItemLink">Most Viewed<span class="Aside"><span class="Count" style="background-color:#000000; "><span class="fa fa-hand-o-right"></span>></span></span></a></li>
-                                <li  onclick="Go('Solved')"><a href="#" class="ItemLink">Solved<span class="Aside"><span class="Count" style="background-color:#000000; "><span class="fa fa-hand-o-right"></span></span></span></a></li>
-                                <li  onclick="Go('UnAnswered')"><a href="#" class=" Itemlink">UnAnswered<span class="Aside"><span class="Count" style="background-color:#000000; "><span class="fa fa-hand-o-right"></span></span></span></a></li>
-                                <li  onclick="Go('Latest Posts')"> <a href="#" class="ItemLink">Recent<span class="Aside"><span class="Count" style="background-color:#000000; "><span class="fa fa-hand-o-right"></span></span></span></a></li>
-                              
-                            </ul>                       
-                         </div>
-                      
-                          
-                        
-                    
-                    
-                    
-                    <div class="Box BoxCategories">
-                                  <div style="background-color:#000000;color:#ffffff;padding:10px;border-radius:7px">
-                                      Categories
-                                  </div>
-                      
+                                <li onclick="Go('Top Posts');"><a href="#" class="ItemLink">Top Posts<span class="Aside"><span class="Count" style="background-color:#000000; "><span class="fa fa-hand-o-right"></span></span></span></a></li>
+                                <li onclick="Go('Most Viewed')"><a href="#" class="ItemLink">Most Viewed<span class="Aside"><span class="Count" style="background-color:#000000; "><span class="fa fa-hand-o-right"></span>></span></span></a></li>
+                                <li onclick="Go('Solved')"><a href="#" class="ItemLink">Solved<span class="Aside"><span class="Count" style="background-color:#000000; "><span class="fa fa-hand-o-right"></span></span></span></a></li>
+                                <li onclick="Go('UnAnswered')"><a href="#" class=" Itemlink">UnAnswered<span class="Aside"><span class="Count" style="background-color:#000000; "><span class="fa fa-hand-o-right"></span></span></span></a></li>
+                                <li onclick="Go('Latest Posts')"> <a href="#" class="ItemLink">Recent<span class="Aside"><span class="Count" style="background-color:#000000; "><span class="fa fa-hand-o-right"></span></span></span></a></li>
+
+                            </ul>
+
+                        </div>
+
+
+
+
+
+
+                        <div class="Box BoxCategories">
+                            <div style="background-color:#000000;color:#ffffff;padding:10px;border-radius:7px">
+                                Categories
+                            </div>
+
 
 
                             <ul class="PanelInfo PanelCategories">
 
-@{
- 
-    
-    foreach(Category a in c)
-    {
-        
-    <li><a href=" #" onclick="LoadCategory('@a.CatName.Trim()')" class="ItemLink">@a.CatName <span class="Aside"><span class="Count" style="background-color:#000000;; "><span class="Number">@a.PostCount</span></span></span></a></li>
-    }
+                                @{
 
-    }
-     </ul>
-                       
-                                  <div style="background-color:#000000;color:#ffffff;padding:10px;border-radius:7px">
-                                      Latest Posts
-                                      </div>
 
-              
-                                      <ul class="PanelInfo PanelCategories">
-                                          @{
-                                              askCodeDataEntities3 cx1 = new askCodeDataEntities3();
-                                              List<Post> p = new List<Post>();
-                                              p = cx1.Posts.OrderByDescending(x => x.PostId).ToList();
+                                    foreach (Category a in c)
+                                    {
 
-                                              int count = 0;
-                                              foreach (Post a in p)
-                                              {
-                                                  if (count < 5)
-                                                  {
-                                                      <li><a href="/Home/Post?id=@a.PostId" class="ItemLink">@a.PostTitle.Substring(0, 40)<span class="Aside"><span class="Count" style="background-color:#000000; "><span class="Number">@a.CommentCount</span></span></span></a></li>
-                                                  }
-                                                  else
-                                                  {
-                                                      break;
-                                                  }
-                                                  count++;
-                                              }
-                                          }
+                                        <li><a href="#" onclick="LoadCategory('@a.CatName.Trim()')" class="ItemLink">@a.CatName <span class="Aside"><span class="Count" style="background-color:#000000;; "><span class="Number">@a.PostCount</span></span></span></a></li>
+                                    }
 
-                                      </ul>
+                                }
+                            </ul>
 
-                                  </div>
-                     
+                            <div style="background-color:#000000;color:#ffffff;padding:10px;border-radius:7px">
+                                Latest Posts
+                            </div>
+
+
+                            <ul class="PanelInfo PanelCategories">
+                                @{
+                                    askCodeDataEntities3 cx1 = new askCodeDataEntities3();
+                                    List<Post> p = new List<Post>();
+                                    p = cx1.Posts.OrderByDescending(x => x.PostId).ToList();
+
+                                    int count = 0;
+                                    foreach (Post a in p)
+                                    {
+                                        if (count < 5)
+                                        {
+                                            <li><a href="/Home/Post?id=@a.PostId" class="ItemLink">@a.PostTitle.Substring(0, 40)<span class="Aside"><span class="Count" style="background-color:#000000; "><span class="Number">@a.CommentCount</span></span></span></a></li>
+                                        }
+                                        else
+                                        {
+                                            break;
+                                        }
+                                        count++;
+                                    }
+                                }
+
+                            </ul>
+
+                        </div>
+
 
                     </div>
                     <div id="ajax">
                         @RenderBody();
                     </div>
-                   
-                </section>
-            
+                </div>
 
-                <!-- Begin of Foot -->
-               
-                  
-                        <!-- Various definitions for Javascript //-->
+                </section>
+     
+            </section>
+
                         <script>
                             var definitions = {
                                 'AnalyticsTask': "tick",
@@ -325,9 +333,9 @@
 
 
 
-            <section id="orifooter">
+            <section id="orifooter" style="height:350px;margin-top:8%">
                 <div class="container">
-                    <div class="pou">
+                    <div class="pou" >
                                      
 
                                 <footer class="footer-distributed">
@@ -351,9 +359,7 @@
                                         </p>
                                        
                                     </div>
-                                </footer>
-
-                              
+                                </footer>                              
                          
 
                         <div class="row footdw">
@@ -362,8 +368,6 @@
                                     <span class="footcop">
                                         © 2015 AskCode  Developed by
                                         <a class="fixf" href="#">Mughees Mehdi</a>
-
-
                                     </span>
                                 </div>
                             </div>
@@ -390,7 +394,15 @@
 
             </script>
 
+        <script>
+            $("input[data-autocomplete-source]").each(function () {
+                var t = $(this);
+                
+               
+                t.autocomplete({ source: t.attr("data-autocomplete-source") });
 
+            });
+         </script>
         </body>
 
     </html>

@@ -51,7 +51,7 @@
                                                         <td class="center">
 
 
-                                                            <a class="btn btn-danger" href="/Admin/DeleteCategory?id=@u.CatId">
+                                                            <a class="btn btn-danger"  onclick="Delete('@u.CatId');">
                                                                 <i class="glyphicon glyphicon-trash icon-white"></i>
                                                                 Delete
                                                             </a>
@@ -75,6 +75,27 @@
         </div><!--/fluid-row-->
 
     </div><!--/.fluid-container-->
+
+    <script>
+       function Delete(id)
+       {
+
+
+           swal({
+               title: "Are you sure?",
+               text: "You will not be able to recover",
+               type: "warning",
+               showCancelButton: true,
+               confirmButtonClass: "btn-danger",
+               confirmButtonText: "Yes, delete it!",
+               closeOnConfirm: false
+           },
+function () {
+    window.location.assign("/Admin/DeleteCategory?id="+id);
+
+});
+       }
+    </script>
 </body>
 
 

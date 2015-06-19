@@ -62,7 +62,7 @@
                     <i class="glyphicon glyphicon-edit icon-white"></i>
                     Edit
                 </a>
-                <a class="btn btn-danger" href="/Admin/DeletePost?id=@u.PostId">
+                <a class="btn btn-danger"  onclick = "Delete('@u.PostId');">
                     <i class="glyphicon glyphicon-trash icon-white"></i>
                     Delete Post
                 </a>
@@ -81,4 +81,77 @@
         </div>
 
     </div>
+
+
+    <script>
+
+       function Delete(id)
+       {
+
+
+           swal({
+               title: "Are you sure?",
+               text: "Your will not be able to recover this imaginary file!",
+               type: "warning",
+               showCancelButton: true,
+               confirmButtonClass: "btn-danger",
+               confirmButtonText: "Yes, delete it!",
+               closeOnConfirm: false
+           },
+function () {
+    window.location.assign("/Admin/DeletePost?id="+id);
+
+});
+       }
+        </script>
+
+         @{
+           try
+           {
+               string a = Session["Message"].ToString();
+               if(a=="Deleted")
+               {
+                   <script type="text/javascript">
+
+
+                         $(document).ready(function ()
+                         {
+                             swal("Deleted!", "Your Post has been deleted.", "success");
+
+                         });
+                    </script>
+             
+                    Session["Message"] = null;
+                
+                  
+                  
+                  
+               }
+             
+               if(a=="Editted")
+               {
+                   <script type="text/javascript">
+
+
+                         $(document).ready(function ()
+                         {
+                             swal("Editted", "Your Post has been Editted.", "success");
+
+                         });
+
+                         </script>
+             
+             
+                         Session["Message"] = null;
+             
+                 
+               }
+           }
+           catch (Exception e)
+           {
+
+           }
+       }
+
+  
 </body>

@@ -114,7 +114,7 @@ ul.FilterMenu {display:none;}
 .PanelCategories .Aside {float:left;margin-right:7px;}
 
 .relative{position:relative;}
-.steam-line{width:1px;position:absolute;top:0px;right:349px;background:#ececec;height:100%;min-height:100%;}
+.steam-line{width:1px;position:absolute;top:0px;right:349px;background:#ececec;height:90%;min-height:90%;}
 
 .footitle {
 color: #ffffff;

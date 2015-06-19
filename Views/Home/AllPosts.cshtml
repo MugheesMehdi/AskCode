@@ -1,7 +1,7 @@
 ﻿@using PagedList.Mvc;
 @using AskCode.Models
 @model PagedList.PagedList<AskCode.Models.Post>
-<h2> @ViewBag.Title</h2>
+
 
     
 <htmk>
@@ -55,10 +55,10 @@
 
                                     <span class="MItem pull-right" style="height:30px" >
                                         <span style="height:30px">
-                                            <span class="label label-default" style="color:#ffffff"><i class="fa fa-eye" style="height:50px;width:50px;padding:10px;font-size:13px;border-radius:10px">@p.ViewCount</i></span>
+                                            <span class="label label" style="color:#000000"><i class="fa fa-eye" style="height:50px;width:50px;padding:10px;font-size:13px;border-radius:10px">@p.ViewCount</i></span>
                                         </span>
 
-                                        <span class="label label-default" style="color:#ffffff">
+                                        <span class="label label" style="color:#000000">
                                             <i class="fa  fa-thumbs-o-up" style="height:50px;width:50px;padding:10px;font-size:13px;border-radius:10px">
                                                 @p.VoteCount
                                             </i>
@@ -82,7 +82,7 @@
                                     <span class="MItem LastCommentDate"><time title="April 22, 2015 11:48AM" datetime="2015-04-22T11:48:21+00:00">@p.PostDateTime</time></span>
                                     <span class="MItem Category Category-general"><a href="/Home/CategoryPage?category=@p.Category.CatName">@p.Category.CatName</a></span>
 
-                                    <div style="margin-top:2%;">
+                                    <div style="margin-top:2%;color:#000000">
                                         @{
                         if (p.Tags != null)
                         {
@@ -107,7 +107,7 @@
                             {
                                 <a href="/Home/PostVoteCount?id=@p.PostId" class="btn btn-default Small pull-right" style="font-size:13px;border-radius:10px">
                                     <span class=" fa fa-thumbs-o-up" style="height:20px;width:20px;font-size:13px;border-radius:10px">
-                                    </span> +1
+                                    </span> + 1
                                 </a>
                             }
                         }
