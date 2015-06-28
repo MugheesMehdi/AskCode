@@ -1,12 +1,9 @@
 ﻿@{
     ViewBag.Title = "AllPostsAjax";
     Layout = null;
-    }
+}
 
-
-@using PagedList.Mvc;
 @using AskCode.Models
-@model PagedList.PagedList<AskCode.Models.Post>
 
 
 
@@ -47,10 +44,12 @@
 
                             <span class="MItem pull-right" style="height:30px">
                                 <span style="height:30px">
-                                    <span class="label label-default"><i class="fa fa-eye" style="height:50px;width:50px;padding:10px;font-size:13px;border-radius:10px">@p.ViewCount</i></span>
+                                    <span class="label label" style="color:#000000">
+                                        <i class="fa fa-eye" style="height:50px;width:50px;padding:10px;font-size:13px;border-radius:10px">@p.ViewCount</i>
+                                    </span>
                                 </span>
 
-                                <span class="label label-default">
+                                <span class="label label" style="color:#000000">
                                     <i class="fa  fa-thumbs-o-up" style="height:50px;width:50px;padding:10px;font-size:13px;border-radius:10px">
                                         @p.VoteCount
                                     </i>
@@ -117,14 +116,6 @@
         }
     </ul>
 </div>
-<div id='Paging' style="text-align:center">
-    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
-    of @Model.PageCount
-
-    @Html.PagedListPager(Model, page => Url.Action("PostsPages", new { page }))
-
-
-</div>
 @{  try
   {
       string login = Session["Login"].ToString();
@@ -134,11 +125,10 @@
         <script type="text/javascript">
 
 
-                        $(document).ready(function ()
-                        {
-                            LoginSuccessful();
+            $(document).ready(function () {
+                LoginSuccessful();
 
-                    });
+            });
 
 
         </script>
@@ -152,10 +142,9 @@
   Session["Login"] = null;
 }
 <script>
-           function LoginSuccessful()
-           {
-               swal("Successfully LoggedIn","Welcome To AskCode","success");
-           }
+    function LoginSuccessful() {
+        swal("Successfully LoggedIn", "Welcome To AskCode", "success");
+    }
 </script>
 
 

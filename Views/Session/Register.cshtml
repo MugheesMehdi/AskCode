@@ -3,8 +3,8 @@
     Layout = null;
 }
 
-<h2 style="color:floralwhite">Register</h2>
 
+<h2 style="color:floralwhite">Register</h2>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,147 +24,145 @@
     <link href="~/Content/themes/CSS/enable.css" rel="stylesheet" media="all" />
 </head>
 
-<body id="dashboard_entry_signin" class="Dashboard Entry signin  Section-Entry">
-    <div style="margin-top:10px"></div>
+<body id="dashboard_entry_register" class="Dashboard Entry register  Section-Entry">
+       
+                <div class="Column ContentColumn" id="Content" style="margin-right:420px;">
+                    <div class="blackit">
+                    <a href="../" >
 
-    <div class="Column ContentColumn" id="Content" style="margin-right:450px;margin-top:-1px">
-        <div class="blackit">
-            <a href="../">
-
-                <i class="fa fa-arrow-circle-left"></i>
-                <span>Back to Home</span>
-            </a>
-        </div>
+    <i class="fa fa-arrow-circle-left"></i>
+                         <span>Back to Home</span>
+</a></div>
 
 
-        <div class="FormTitleWrapper">
-            <h1>Register</h1>
-            <div class="FormWrapper">
-                <form id="Form_User_Register" method="post" action="/Session/InsertData">
-                    <div>
-                        <ul>
-                            <li>
-                                <div class="fulix">
-                                    <label for="Form_Email">Email</label>
-                                    <div class="TextBoxWrapper"><input type="text" required="" id="Form_Email" name="emailId" value="" placeholder="Example@domain.com" class="InputBox" /></div>
+                    <div class="FormTitleWrapper" >
+                        <h1>Register</h1>
+                        <div class="FormWrapper">
+                            <form id="Form_User_Register" method="post" action="/Session/InsertData">
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <div class="fulix">
+                                                <label for="Form_Email">Email</label>
+                                                <div class="TextBoxWrapper"><input type="email" required="" id="Form_Email" name="emailId" value="" placeholder="Example@domain.com" class="InputBox" /></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="fulix">
+                                                <label for="Form_Name">Username</label>
+                                                <div class="TextBoxWrapper"><input type="text" required="" id="Form_Name" name="Username" value="" placeholder="Username" class="InputBox" /></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="fulix">
+                                                <label for="Form_Password">Password</label>
+                                                <div class="TextBoxWrapper">
+                                                    <input type="password" id="Form_Password" required="" name="Password" data-strength="true" value="" placeholder="Password" class="InputBox" />
+
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="Buttons">
+                                            <input type="submit" id="Form_ApplyforMembership" name="Apply" value="Register" class="Button Primary" />
+                                        </li>
+                                    </ul>
                                 </div>
-                            </li>
-                            <li>
-                                <div class="fulix">
-                                    <label for="Form_Name">Username</label>
-                                    <div class="TextBoxWrapper"><input type="text" required="" id="Form_Name" name="Username" value="" placeholder="Username" class="InputBox" /></div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="fulix">
-                                    <label for="Form_Password">Password</label>
-                                    <div class="TextBoxWrapper">
-                                        <input type="password" id="Form_Password" required="" name="Password" data-strength="true" value="" placeholder="Password" class="InputBox" />
-
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="Buttons">
-                                <input type="submit" id="Form_ApplyforMembership" name="Apply" value="Register" class="Button Primary" />
-                            </li>
-                        </ul>
+                            </form>
+                        </div>
                     </div>
-                </form>
-            </div>
-        </div>
+                  
+
+                    <style type="text/css">
+                        .foldmenu, .origamit, .menucol, .footerw, .rightl, .fic, .BreadcrumbsWrapper {
+                            display: none;
+                        }
+
+                        .logocol {
+                            width: 100% !important;
+                            text-align: center;
+                            color: #333333;
+                        }
+
+                        .SiteTitle a {
+                            color: #333333;
+                            position: relative;
+                            top: 40px;
+                        }
 
 
-        <style type="text/css">
-            .foldmenu, .origamit, .menucol, .footerw, .rightl, .fic, .BreadcrumbsWrapper {
-                display: none;
-            }
+                        .orifooter {
+                            background: none;
+                            border: none;
+                        }
 
-            .logocol {
-                width: 100% !important;
-                text-align: center;
-                color: #333333;
-            }
+                        .leftl {
+                            float: none;
+                            width: 100%;
+                            text-align: center;
+                            padding: 0px;
+                        }
 
-            .SiteTitle a {
-                color: #333333;
-                position: relative;
-                top: 40px;
-            }
+                        .footcop {
+                            font-size: 13px;
+                            color: #000000;
+                            opacity: 0.9;
+                            font-weight: normal;
+                            margin-left: -15px;
+                            font-family: "Open Sans", helvetica, arial, sans-serif;
+                        }
 
+                        body.Entry form ul li label {
+                            padding: 8px 0 0;
+                        }
 
-            .orifooter {
-                background: none;
-                border: none;
-            }
+                        .orifooter {
+                            padding-bottom: 0px;
+                            margin-top: 64px;
+                        }
 
-            .leftl {
-                float: none;
-                width: 100%;
-                text-align: center;
-                padding: 0px;
-            }
+                        a.ForgotPassword {
+                            font-size: 14px;
+                            font-family: 'Open Sans';
+                            font-weight: 400;
+                            font-size: 13px;
+                            color: #333333;
+                        }
 
-            .footcop {
-                font-size: 13px;
-                color: #000000;
-                opacity: 0.9;
-                font-weight: normal;
-                margin-left: -15px;
-                font-family: "Open Sans", helvetica, arial, sans-serif;
-            }
+                        .icheckbox_flat-blue, .iradio_flat-blue {
+                            top: -1px;
+                        }
 
-            body.Entry form ul li label {
-                padding: 8px 0 0;
-            }
+                        ::-webkit-input-placeholder {
+                            color: black;
+                        }
 
-            .orifooter {
-                padding-bottom: 0px;
-                margin-top: 64px;
-            }
+                        :-moz-placeholder { /* Firefox 18- */
+                            color: black;
+                        }
 
-            a.ForgotPassword {
-                font-size: 14px;
-                font-family: 'Open Sans';
-                font-weight: 400;
-                font-size: 13px;
-                color: #333333;
-            }
+                        ::-moz-placeholder { /* Firefox 19+ */
+                            color: black;
+                        }
 
-            .icheckbox_flat-blue, .iradio_flat-blue {
-                top: -1px;
-            }
+                        :-ms-input-placeholder {
+                            color: black;
+                        }
 
-            ::-webkit-input-placeholder {
-                color: black;
-            }
+                        body.Section-Entry .Primary {
+                            margin: 14px 0px 0px;
+                            position: relative;
+                            top: 19px;
+                        }
 
-            :-moz-placeholder { /* Firefox 18- */
-                color: black;
-            }
-
-            ::-moz-placeholder { /* Firefox 19+ */
-                color: black;
-            }
-
-            :-ms-input-placeholder {
-                color: black;
-            }
-
-            body.Section-Entry .Primary {
-                margin: 14px 0px 0px;
-                position: relative;
-                top: 19px;
-            }
-
-            .pgo {
-                position: relative;
-                top: 10px;
-            }
-        </style>
-
-    </div>
+                        .pgo {
+                            position: relative;
+                            top: 10px;
+                        }
+                    </style>
+                
+                </div>
 
 
-</body>
+          </body>
 </html>

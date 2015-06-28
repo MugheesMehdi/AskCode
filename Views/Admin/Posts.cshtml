@@ -62,7 +62,7 @@
                     <i class="glyphicon glyphicon-edit icon-white"></i>
                     Edit
                 </a>
-                <a class="btn btn-danger"  onclick = "Delete('@u.PostId');">
+                <a class="btn btn-danger" onclick="Delete('@u.PostId');">
                     <i class="glyphicon glyphicon-trash icon-white"></i>
                     Delete Post
                 </a>
@@ -81,7 +81,6 @@
         </div>
 
     </div>
-
 
     <script>
 
@@ -103,15 +102,15 @@ function () {
 
 });
        }
-        </script>
+    </script>
 
-         @{
-           try
-           {
-               string a = Session["Message"].ToString();
-               if(a=="Deleted")
-               {
-                   <script type="text/javascript">
+    @{
+        try
+        {
+            string a = Session["Message"].ToString();
+            if (a == "Deleted")
+            {
+                <script type="text/javascript">
 
 
                          $(document).ready(function ()
@@ -119,18 +118,18 @@ function () {
                              swal("Deleted!", "Your Post has been deleted.", "success");
 
                          });
-                    </script>
-             
-                    Session["Message"] = null;
-                
-                  
-                  
-                  
-               }
-             
-               if(a=="Editted")
-               {
-                   <script type="text/javascript">
+                </script>
+
+                Session["Message"] = null;
+
+
+
+
+            }
+
+            if (a == "Editted")
+            {
+                <script type="text/javascript">
 
 
                          $(document).ready(function ()
@@ -139,19 +138,17 @@ function () {
 
                          });
 
-                         </script>
-             
-             
-                         Session["Message"] = null;
-             
-                 
-               }
-           }
-           catch (Exception e)
-           {
+                </script>
 
-           }
-       }
 
-  
+                Session["Message"] = null;
+
+
+            }
+        }
+        catch (Exception e)
+        {
+
+        }
+    }
 </body>

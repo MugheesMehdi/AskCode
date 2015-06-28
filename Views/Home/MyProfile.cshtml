@@ -1,7 +1,6 @@
-﻿
-@using AskCode.Models
+﻿@using AskCode.Models
 @{
-     
+
     ViewBag.Title = "Profile";
 }
 
@@ -46,11 +45,11 @@
 <script src="~/Content/themes/JS/ajax.js"></script>
 <h2>Profile</h2>
 
-<form class="form-horizontal pull-left" method="post" action="/Home/EditProfile" enctype="multipart/form-data" >
-       <fieldset>
+<form class="form-horizontal" method="post" action="/Home/EditProfile" enctype="multipart/form-data">
+    <fieldset>
 
-       
-    
+
+
 
         @{
 
@@ -58,27 +57,26 @@
 
         <!-- Text input-->
 
-    <div class="form-group  " >
-        <div class="col-md-8 align-center">
-            <img src="~/Content/themes/Images/@Model.UserFile" alt="profile" height="150" width="150" style="border-radius:13px;align-content:center ">
-        </div>       
-        <div class="col-md-8 ">
-            <input id="image" name="image" class="input-file" type="file" value="Change Picture">
-        </div>
-    </div>
-            <div class="form-group ">
-        
-                <label class="col-md-4 control-label" for="Username" >Username</label>
-                <div class="col-md-8">
-                    <input id="textinput" name="User" disabled="disabled" class="form-control input-md"  type="text" value="@Model.Username.Trim()">
-                    <input id="textinput" name="Username" type="hidden"  value="@Model.Username.Trim()">
+            <div class="form-group">
+                <div class="col-md-4 align-center">
+                    <img src="~/Content/themes/Images/@Model.UserFile" alt="profile" height="150" width="150" style="border-radius:13px;align-content:center ">
+                </div>
+                <div class="col-md-4" style="margin-left:50px">
+                    <input id="image" name="image" class="input-file" type="file" value="Change Picture">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Username</label>
+                <div class="col-md-4">
+                    <input id="textinput" name="User" disabled="disabled" class="form-control input-md" type="text" value="@Model.Username.Trim()">
+                    <input id="textinput" name="Username" type="hidden" value="@Model.Username.Trim()">
                 </div>
             </div>
 
         <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="Email">Email </label>
-                <div class="col-md-8">
+                <label class="col-md-4 control-label" for="email">Email </label>
+                <div class="col-md-4">
                     <input id="email" name="emailId" value="@Model.emailId.Trim()" placeholder="" class="form-control input-md" required="" type="text">
 
                 </div>
@@ -86,8 +84,8 @@
 
         <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="assword">Password</label>
-                <div class="col-md-8">
+                <label class="col-md-4 control-label" for="password">Password</label>
+                <div class="col-md-4">
                     <input id="password" name="password" value="@Model.Password.Trim()" placeholder="" class="form-control input-md" required="" type="text">
 
                 </div>
@@ -97,8 +95,6 @@
             <input type="hidden" name="@Model.UserFile.Trim()" value="" />
         }
         <!-- File Button -->
-       
-
         <!-- Button -->
         <div class="form-group">
             <label class="col-md-4 control-label" for="Save"></label>

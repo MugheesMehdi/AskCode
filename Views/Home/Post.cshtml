@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ASkCode</title>
+    <title>Cube</title>
     <link href="~/Content/themes/CSS/style.css" rel="stylesheet" media="all" />
     <link href="~/Content/themes/CSS/custom.css" rel="stylesheet" media="all" />
     <link href="~/Content/themes/bootstrap.css" rel="stylesheet" />
@@ -49,8 +49,7 @@
                                 askCodeDataEntities4 ed = new askCodeDataEntities4();
                                  string user=ViewBag.Post.PostUsername;
                                 User u = ed.Users.First(x => x.Username.TrimEnd() == user );
-                                string img = u.UserFile;
-                               
+                                string img = u.UserFile;                               
                             }
                          
                             <div class="iipo">
